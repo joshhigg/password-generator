@@ -5,7 +5,6 @@ var special = ["!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","
 
 function generatePassword() {
   var passwordLength = window.prompt("How long would you like your password to be?\n\nBetween 8 and 128 characters");
-//Enter password length
   if(!passwordLength) {
     return;
   } else if(passwordLength < 8 || passwordLength > 128) {
@@ -17,19 +16,31 @@ function generatePassword() {
   var includeUppercase = window.confirm("Should it include uppercase letters?");
   var includeSpecial = window.confirm("Should it include special characters?");
 
-  var randomLowercase = Math.floor(Math.random() * lowercase.length);
-  var randomUppercase = Math.floor(Math.random() * uppercase.length);
+  //var potentialChar = [includeLowercase, includeUppercase, includeSpecial]
 
+  function getRandom(arr) {
+    var randIndex = Math.floor(Math.random() * arr.length);
+    var randElement = arr[randIndex];
 
-
-
-  if(!includeLowercase && !includeUppercase && !includeSpecial) {
-    return "Unable to generate password.  Please select OK for at least one type of character.";
-  } else if (includeLowercase && !includeUppercase && !includeSpecial) {
-    return lowercase[randomLowercase];
-  } else if (includeLowercase && includeUppercase && !includeSpecial) {
-    return [lowercase[randomLowercase], uppercase[randomUppercase]];
+    return randElement;
   }
+
+    if(!includeLowercase && !includeUppercase && !includeSpecial) {
+    return "Unable to generate password.  Please select OK for at least one type of character.";
+
+    } else if (includeLowercase) {
+      for(var i=0; i < passwordLength; i++) {
+        return getRandom(lowercase);
+      }
+    return getRandom(lowercase);
+    } else if (includeUppercase) {
+    return getRandom(uppercase);
+    } else if (includeSpecial) {
+    return getRandom(special);
+    }
+    
+  
+  
 
 }
 
