@@ -15,3 +15,7 @@ Generate a random password with the click of a button.
 2. Choose how many characters your password should contain
 3. Select whether it should include lowercase, uppcase, and special characters
 4. Your random password will generate on the screen, where you can then copy and use it!
+
+### Code Source
+
+TA assisted to concatenate the "if" statements to clean up the code.
